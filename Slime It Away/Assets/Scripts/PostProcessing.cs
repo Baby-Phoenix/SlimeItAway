@@ -20,7 +20,6 @@ public class PostProcessing : MonoBehaviour
     private void Update()
     {
         float value = spawner.garbageSpawned / player.health;
-        Debug.Log(value);
         vignette.intensity.value = value;
     }
 
