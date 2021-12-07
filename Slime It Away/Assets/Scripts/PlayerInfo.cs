@@ -84,7 +84,7 @@ public class PlayerInfo : MonoBehaviour
             Destroy(collision.gameObject);
             FindObjectOfType<Score>().score++;
             garbageSpawner.garbageSpawned--;
-            garbageSpawner.spawnDelay += (garbageSpawner.time / 500);
+            garbageSpawner.spawnDelay += (garbageSpawner.time / 250);
         }
     }
 }

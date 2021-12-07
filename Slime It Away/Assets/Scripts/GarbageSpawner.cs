@@ -8,7 +8,7 @@ public class GarbageSpawner : MonoBehaviour
    public GameObject garbage;
     public float garbageSpawned = 0;
     public float time = 0;
-    public bool stopSpawning = false;
+    public bool stopSpawning;
     public float spawnTime;
     public float spawnDelay;
     [SerializeField] int minX, maxX, minY, maxY;
