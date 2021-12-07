@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
+    static bool isPlayAgain = false;
     public void Play()
     {
-        SceneManager.LoadScene("Forest");
+        if (!isPlayAgain)
+            SceneManager.LoadScene("Tutorial");
+
+        else
+            SceneManager.LoadScene("Forest");
+
     }
     public void Exit()
     {
@@ -17,5 +23,6 @@ public class Main : MonoBehaviour
     public void PlayAgain()
     {
         SceneManager.LoadScene("Main");
+        isPlayAgain = true;
     }
 }

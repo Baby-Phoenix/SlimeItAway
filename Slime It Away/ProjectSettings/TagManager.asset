@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Environment
   - Trash
+  - Tree
+  - Door
+  - FinalDoor
   layers:
   - Default
   - TransparentFX

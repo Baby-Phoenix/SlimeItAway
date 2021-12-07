@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerInfo : MonoBehaviour
@@ -13,6 +14,7 @@ public class PlayerInfo : MonoBehaviour
     private float vertical;
     [SerializeField] private float speed = 8f;
     public float health = 30;
+    public Slider healthSlider;
 
     // Update is called once per frame
     void Update()
@@ -72,6 +74,7 @@ public class PlayerInfo : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+        healthSlider.value = garbageSpawner.garbageSpawned;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -80,6 +83,8 @@ public class PlayerInfo : MonoBehaviour
         {
             Destroy(collision.gameObject);
             FindObjectOfType<Score>().score++;
+            garbageSpawner.garbageSpawned--;
+            garbageSpawner.spawnDelay += (garbageSpawner.time / 100);
         }
     }
 }

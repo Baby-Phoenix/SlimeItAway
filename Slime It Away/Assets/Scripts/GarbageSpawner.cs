@@ -1,39 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GarbageSpawner : MonoBehaviour
 {
    public GameObject garbage;
     public float garbageSpawned = 0;
-    private float time = 0;
+    public float time = 0;
     public bool stopSpawning = false;
     public float spawnTime;
     public float spawnDelay;
+    [SerializeField] int minX, maxX, minY, maxY;
+    
 
     private void Update()
     {
-        time += Time.deltaTime;
-        spawnTime += Time.deltaTime;
-
-        
-        if(spawnTime>=spawnDelay)
+        if (!stopSpawning)
         {
-            SpawnGarbage();
-            spawnTime = 0;
-            spawnDelay = spawnDelay - (time / 100);
-            garbageSpawned++;
+            time += Time.deltaTime;
+            spawnTime += Time.deltaTime;
 
-            if (spawnDelay <= 0)
+
+            if (spawnTime >= spawnDelay)
             {
-                spawnDelay = 0.1f;
+                SpawnGarbage();
+                spawnTime = 0;
+                spawnDelay = spawnDelay - (time / 100);
+                garbageSpawned++;
+
+                if (spawnDelay <= 0)
+                {
+                    spawnDelay = 0.1f;
+                }
             }
         }
     }
 
     public void SpawnGarbage()
     {
-        Instantiate(garbage, new Vector3(Random.Range(-30, 30), Random.Range(-30f, 30f), 1), new Quaternion());
+        Instantiate(garbage, new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), 1), new Quaternion());
 
     }
 }
